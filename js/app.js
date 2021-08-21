@@ -1,6 +1,6 @@
 function setPrice(id,extra){
-    const extraMemory = document.getElementById(id);
-    extraMemory.innerText = extra;
+    const extraCost = document.getElementById(id);
+    extraCost.innerText = extra;
     const totalCost = calcTotal();
     const totalPrice = document.getElementById('total-cost');
     totalPrice.innerText = totalCost;
@@ -21,9 +21,7 @@ const deliveryCost = takeValue('delivery-cost');
 const totalCost = baseCost + memoryCost + storageCost + deliveryCost;
 return totalCost;
 }
-
         // Click handler
-
 document.getElementById('memory-8gb').addEventListener('click', function(){
     setPrice('memory-cost',0);
 })
@@ -46,7 +44,6 @@ document.getElementById('fast-delivery').addEventListener('click', function(){
     setPrice('delivery-cost',20);
 })
         // Apply Promo code and set total 
-
 document.getElementById('apply-btn').addEventListener('click', function(){
     const inputFiled = document.getElementById('promo-filed');
     const inputValue = inputFiled.value;
@@ -56,6 +53,8 @@ document.getElementById('apply-btn').addEventListener('click', function(){
         const discount = Math.floor((totalCost/100) * 20);
         const discountPrice = totalCost - discount;
         finalPrice.innerText = discountPrice;
+        inputFiled.value = '';
+    }else{
         inputFiled.value = '';
     }
 })
